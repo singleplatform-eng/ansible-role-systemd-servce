@@ -1,0 +1,17 @@
+---
+
+- name: Create Systemd Configuration Directory
+  file:
+    path: "{{service_config_dir}}"
+    owner: root
+    group: root
+    mode: 0750
+    state: directory
+
+- name: Create Systemd Log Directory
+  file:
+    path: "{{service_log_dir}}"
+    owner: "{{service_config.user|default('root')}}"
+    group: "{{service_config.group|default('root')}}"
+    mode: 0750
+    state: directory

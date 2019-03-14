@@ -1,0 +1,15 @@
+---
+
+- name: Link Service Unit
+  file:
+    src: "{{service_config_dir}}/{{service_name}}.service"
+    dest: "{{service_systemd_service_dir}}/{{service_name}}.service"
+    owner: root
+    group: root
+    state: link
+
+- name: "Reload systemd Daemon for {{service_name}} changes"
+  systemd:
+   daemon_reload: yes
+  changed_when: True
+  when: systemd_service_unit_result is changed

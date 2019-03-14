@@ -1,0 +1,22 @@
+---
+
+- name: Manage Systemd Service Environment File
+  template:
+    src: templates/environmentfile.j2
+    dest: "{{service_config_dir}}/{{service_name}}.env"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Debug
+  debug:
+    msg: "service: {{service_config}}\nunit: {{unit_config}}\n:install: {{install_config}}\n"
+
+- name: Manage Systemd Service Template
+  template:
+    src: templates/service.j2
+    dest: "{{service_config_dir}}/{{service_name}}.service"
+    owner: root
+    group: root
+    mode: 0644
+  register: systemd_service_unit_result

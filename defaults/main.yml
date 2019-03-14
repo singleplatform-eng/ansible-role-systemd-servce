@@ -1,0 +1,139 @@
+---
+
+unit_config: {}
+service_config:
+  ExecStart: /bin/echo "${EXAMPLE_ARGS}"
+  Type: oneshot
+  EnvironmentFile: "{{service_config_dir}}/{{service_name}}.env"
+install_config: {}
+
+service_config_dir: "/etc/{{service_name}}"
+service_systemd_service_dir: /etc/systemd/system
+service_log_dir: "/var/log/{{service_name}}"
+
+service_environment:
+  EXAMPLE_ARGS: 'texting'
+
+install_section_settings:
+  - Alias
+  - Also
+  - DefaultInstance
+  - RequiredBy
+  - WantedBy
+
+unit_settings:
+  - After
+  - AllowIsolate
+  - AssertACPower
+  - AssertArchitecture
+  - AssertCapability
+  - AssertControlGroupController
+  - AssertDirectoryNotEmpty
+  - AssertFileIsExecutable
+  - AssertFileNotEmpty
+  - AssertFirstBoot
+  - AssertGroup
+  - AssertHost
+  - AssertKernelCommandLine
+  - AssertKernelVersion
+  - AssertNeedsUpdate
+  - AssertPathExists
+  - AssertPathExistsGlob
+  - AssertPathIsDirectory
+  - AssertPathIsMountPoint
+  - AssertPathIsReadWrite
+  - AssertPathIsSymbolicLink
+  - AssertSecurity
+  - AssertUser
+  - AssertVirtualization
+  - Before
+  - BindTo
+  - CollectMode
+  - ConditionACPower
+  - ConditionArchitecture
+  - ConditionCapability
+  - ConditionControlGroupController
+  - ConditionDirectoryNotEmpty
+  - ConditionFileIsExecutable
+  - ConditionFileNotEmpty
+  - ConditionFirstBoot
+  - ConditionGroup
+  - ConditionHost
+  - ConditionKernelCommandLine
+  - ConditionKernelVersion
+  - ConditionNeedsUpdate
+  - ConditionPathExists
+  - ConditionPathExistsGlob
+  - ConditionPathIsDirectory
+  - ConditionPathIsMountPoint
+  - ConditionPathIsReadWrite
+  - ConditionPathIsSymbolicLink
+  - ConditionSecurity
+  - ConditionUser
+  - ConditionVirtualization
+  - Conflicts
+  - DefaultDependencies
+  - Description
+  - Documentation
+  - FailureAction
+  - FailureActionExitStatus
+  - IgnoreOnIsolate
+  - JobRunningTimeoutSec
+  - JobTimeoutAction
+  - JobTimeoutRebootArgument
+  - JobTimeoutSec
+  - JoinsNamespaceOf
+  - OnFailure
+  - OnFailureJobMode
+  - PartOf
+  - PropagatesReloadTo
+  - RebootArgument
+  - RefuseManualStart
+  - RefuseManualStop
+  - ReloadPropagatedFrom
+  - Requires
+  - RequiresMountsFor
+  - Requisite
+  - StartLimitAction
+  - StartLimitBurst
+  - StartLimitIntervalSec
+  - StopWhenUnneeded
+  - SuccessAction
+  - SuccessActionExitStatus
+  - Wants
+
+service_unit_settings:
+  - BusName
+  - EnvironmentFile
+  - ExecReload
+  - ExecStart
+  - ExecStartPost
+  - ExecStartPre
+  - ExecStop
+  - ExecStopPost
+  - FileDescriptorStoreMax
+  - Group
+  - GuessMainPID
+  - NonBlocking
+  - NotifyAccess
+  - PIDFile
+  - PrivateTmp
+  - RemainAfterExit
+  - Restart
+  - RestartForceExitStatus
+  - RestartPreventExitStatus
+  - RestartSec
+  - RootDirectoryStartOnly
+  - RuntimeDirectory
+  - RuntimeMaxSec
+  - Sockets
+  - SuccessExitStatus
+  - TimeoutSec
+  - TimeoutStartSec
+  - TimeoutStopSec
+  - Type
+  - USBFunctionDescriptors
+  - USBFunctionStrings
+  - User
+  - WatchdogSec
+  - WorkingDirectory

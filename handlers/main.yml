@@ -1,0 +1,23 @@
+---
+
+- name: "Start {{service_name}}.service"
+  systemd:
+    name: "{{service_name}}.service"
+    state: started
+
+- block:
+  - name: "Stop {{service_name}}.service"
+    systemd:
+      name: "{{service_name}}.service"
+      state: stopped
+
+  - name: "Restart {{service_name}}.service"
+    systemd:
+      name: "{{service_name}}.service"
+      state: restarted
+
+  - name: "Reload {{service_name}}.service"
+    systemd:
+      name: "{{service_name}}.service"
+      state: reloaded
+  when: service_config.Type is defined and service_config.Type != 'oneshot'
