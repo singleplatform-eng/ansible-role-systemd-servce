@@ -8,10 +8,6 @@
     group: root
     mode: 0644
 
-- name: Debug
-  debug:
-    msg: "service: {{service_config}}\nunit: {{unit_config}}\n:install: {{install_config}}\n"
-
 - name: Manage Systemd Service Template
   template:
     src: templates/service.j2

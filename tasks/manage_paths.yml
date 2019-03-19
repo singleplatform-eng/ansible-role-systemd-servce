@@ -11,7 +11,7 @@
 - name: Create Systemd Log Directory
   file:
     path: "{{service_log_dir}}"
-    owner: "{{service_config.user|default('root')}}"
-    group: "{{service_config.group|default('root')}}"
+    owner: "{{service.service_config.user|default('root')}}"
+    group: "{{service.service_config.group|default('root')}}"
     mode: 0750
     state: directory
