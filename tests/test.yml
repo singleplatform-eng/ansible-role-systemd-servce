@@ -2,62 +2,12 @@
 
 - hosts: localhost
   remote_user: root
-  tasks:
-    - name: group
-      group:
-        name: gunicorn
-        gid: 10000
-    - name: user
-      user:
-        name: gunicorn
-        group: gunicorn
-        password: !
-        home: /home/gunicorn
-        create_home: yes
-
-    - name: curl
-      package:
-        name: curl
-
-    - name: pip
-      pip:
-        name: gunicorn
-
-- hosts: localhost
-  remote_user: root
+  vars:
+    service_name: example
   roles:
-    - { role: role_under_test, gunicorn_app_dir: /etc/ansible/roles/role_under_test/tests, gunicorn_wsgi_module_name: 'test:application', gunicorn_start_command: '/usr/local/bin/gunicorn' }
-
+    - { role: role_under_test }
   tasks:
-    - name: Test service handlers
-      block:
-        - name: start
-          command: echo starting gunicorn
-          notify: Start gunicorn.service
-
-        - meta: flush_handlers
-
-        - name: stop
-          command: echo stopping gunicorn
-          notify: Stop gunicorn.service
-
-        - meta: flush_handlers
-
-        - name: restart
-          command: echo restarting gunicorn
-          notify: Restart gunicorn.service
-      when: test_handlers is defined
-
-- hosts: localhost
-  remote_user: root
-  tasks:
-    - name: service tests
-      block:
-        - name: Curl self
-          command: curl localhost:8000
-          changed_when: False
-          register: curled
-
-        - name: Test curl output
-          assert: { that: "curled.stdout == 'Hello World'" }
-      when: test_services is defined
+    - name: Handle example
+      command: /bin/true
+      changed_when: false
+      notify: "Start {{service_name}}.service"

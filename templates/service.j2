@@ -1,19 +1,19 @@
 [Unit]
-{% for k,v in unit_config.items() %}
+{% for k,v in service.unit_config.items() %}
 {% if '__omit_place_holder__' not in v|string %}
 {{k}}={{v | replace('\n', '\\n')}}
 {% endif %}
 {% endfor %}
 
 [Service]
-{% for k,v in service_config.items() %}
+{% for k,v in service.service_config.items() %}
 {% if '__omit_place_holder__' not in v|string and 'name' not in k|string %}
 {{k}}={{v | replace('\n', '\\n')}}
 {% endif %}
 {% endfor %}
 
 [Install]
-{% for k,v in install_config.items() %}
+{% for k,v in service.install_config.items() %}
 {% if '__omit_place_holder__' not in v|string %}
 {{k}}={{v | replace('\n', '\\n')}}
 {% endif %}

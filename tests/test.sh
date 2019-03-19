@@ -62,12 +62,6 @@ tail $idempotence \
   && (printf ${green}'Idempotence test: pass'${neutral}"\n") \
   || (printf ${red}'Idempotence test: fail'${neutral}"\n" && exit 1)
 
-
-printf ${green}"Testing Start Handlers and Service\n"${neutral}
-docker exec $container_id ansible-playbook /etc/ansible/roles/role_under_test/tests/$playbook -e 'test_handlers=True test_service=True'
-printf ${green}"Handlers and Service test passed\n"${neutra}
-
-
 # Remove the Docker container (if configured).
 if [ "$cleanup" = true ]; then
   printf "Removing Docker container...\n"
