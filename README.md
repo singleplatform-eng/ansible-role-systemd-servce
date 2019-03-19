@@ -1,4 +1,4 @@
-
+[![Build_Status](https://travis-ci.org/singleplatform-eng/ansible-role-systemd-servce.svg?branch=master)](https://travis-ci.org/singleplatform-eng/ansible-role-systemd-servce)
 SErvice
 =========
 
