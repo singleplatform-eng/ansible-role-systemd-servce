@@ -4,6 +4,15 @@
   remote_user: root
   vars:
     service_name: example
+    service:
+      unit_config: {}
+      environment:
+        EXAMPLE_ARGS: 'testing'
+      service_config:
+        ExecStart: /bin/echo "${EXAMPLE_ARGS}"
+        Type: oneshot
+        EnvironmentFile: "{{service_config_dir}}/{{service_name}}.env"
+      install_config: {}
   roles:
     - { role: role_under_test }
   tasks:

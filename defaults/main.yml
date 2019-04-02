@@ -1,15 +1,5 @@
 ---
 
-service:
-  unit_config: {}
-  environment:
-    EXAMPLE_ARGS: 'testing'
-  service_config:
-    ExecStart: /bin/echo "${EXAMPLE_ARGS}"
-    Type: oneshot
-    EnvironmentFile: "{{service_config_dir}}/{{service_name}}.env"
-  install_config: {}
-
 service_config_dir: "/etc/{{service_name}}"
 service_systemd_service_dir: /etc/systemd/system
 service_log_dir: "/var/log/{{service_name}}"
