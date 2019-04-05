@@ -20,4 +20,4 @@
     systemd:
       name: "{{service_name}}.service"
       state: reloaded
-  when: service_config.Type is defined and service_config.Type != 'oneshot'
+  when: service.service_config.Type is undefined or service.service_config.Type != 'oneshot'
