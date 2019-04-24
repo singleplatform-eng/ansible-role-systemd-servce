@@ -4,6 +4,7 @@ service_config_dir: "/etc/{{service_name}}"
 service_systemd_service_dir: /etc/systemd/system
 service_log_dir: "/var/log/{{service_name}}"
 
+service_name: ''
 
 # TODO: validate unit sections?
 install_section_settings:
