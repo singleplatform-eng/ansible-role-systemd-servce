@@ -18,6 +18,7 @@ Defaults
 service_config_dir: "/etc/{{service_name}}"
 service_systemd_service_dir: /etc/systemd/system
 service_log_dir: "/var/log/{{service_name}}"
+
 ```
 
 Required Vars
@@ -25,6 +26,8 @@ Required Vars
 service (dict) - dictionary defining the contents of the environmentfile and the unit, service, and install sections of the service unit. The unit_config, service_config, and install_config keys must contain the required directives for a functional system service unit or the unit will be malformed. 
 
 service_name (string) - The name of the service. This needs to be passed in via a role var and cannot be interpreted from any variable set via host identity, i.e. group_vars. By default this will be used for the name of the service unit e.g. example.service and the directory where the environment file and service unit are written. With the default service_config_dir this would be /etc/{{service_name}}/{{service_name}}.env and /etc/{{service_name}}/{{service_name}}.service.
+
+Note that environment variables that need to be enclosed by quotes should have them explicitly defined.
 ```
 
 Optional Vars
