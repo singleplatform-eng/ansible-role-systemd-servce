@@ -37,6 +37,8 @@ service_config_dir (string, /etc/{{service_name}}) - The directory where the env
 service_systemd_service_dir (string, /etc/systemd/system) - The systemd directory the service unit will be symlinked into.
 
 service_log_dir (string, /var/log/{{service_name}}) - The log directory for the service. This will be owned by the user and group defined in service_config or root if no user has been configured.
+
+In addition, since systemd units are only capable of reading a single EnvironmentFile, if global Environment Variables are for both celery and non-celery service units - you may optionally define a variable "service_global_env" dictionary of those Environment Variables that will be additionally appended to the Celery Systemd Service Unit.
 ```
 
 Dependencies
