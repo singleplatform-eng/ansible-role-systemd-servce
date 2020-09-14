@@ -5,6 +5,7 @@
     name: "{{service_name}}.service"
     state: started
   listen: "start application"
+  when: service is defined
 
 - block:
   - name: "stop systemd managed service"
@@ -24,4 +25,4 @@
       name: "{{service_name}}.service"
       state: reloaded
     listen: "reload application"
-  when: service.service_config.Type is undefined or service.service_config.Type != 'oneshot'
+  when: service is defined and service.service_config.Type is undefined or service.service_config.Type != 'oneshot'
