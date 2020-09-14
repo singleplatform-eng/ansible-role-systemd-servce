@@ -69,7 +69,7 @@ Example Playbook
     - name: Handle example
       command: /bin/true
       changed_when: false
-      notify: "start {{service_name}}.service"
+      notify: "start systemd managed service"
 ```
 Author Information
 ------------------
