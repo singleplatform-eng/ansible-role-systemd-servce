@@ -1,22 +1,22 @@
 ---
 
-- name: "Start {{service_name}}.service"
+- name: "start {{service_name}}.service"
   systemd:
     name: "{{service_name}}.service"
     state: started
 
 - block:
-  - name: "Stop {{service_name}}.service"
+  - name: "stop {{service_name}}.service"
     systemd:
       name: "{{service_name}}.service"
       state: stopped
 
-  - name: "Restart {{service_name}}.service"
+  - name: "restart {{service_name}}.service"
     systemd:
       name: "{{service_name}}.service"
       state: restarted
 
-  - name: "Reload {{service_name}}.service"
+  - name: "reload {{service_name}}.service"
     systemd:
       name: "{{service_name}}.service"
       state: reloaded
