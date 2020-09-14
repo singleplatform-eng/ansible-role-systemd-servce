@@ -4,20 +4,24 @@
   systemd:
     name: "{{service_name}}.service"
     state: started
+  listen: "start application"
 
 - block:
   - name: "stop {{service_name}}.service"
     systemd:
       name: "{{service_name}}.service"
       state: stopped
+    listen: "stop application"
 
   - name: "restart {{service_name}}.service"
     systemd:
       name: "{{service_name}}.service"
       state: restarted
+    listen: "restart application"
 
   - name: "reload {{service_name}}.service"
     systemd:
       name: "{{service_name}}.service"
       state: reloaded
+    listen: "reload application"
   when: service.service_config.Type is undefined or service.service_config.Type != 'oneshot'
